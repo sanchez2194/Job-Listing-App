@@ -1,9 +1,12 @@
 import React from 'react';
 
-const JobBoardComponent = (props) => (
-    <div>
-        <h1>{props.job.company}</h1>
-        <p>This is the Job Board!</p>
+const JobBoardComponent = ({job}) => (
+    <div className = 'flex'>
+       <div>
+           <img src={job.logo} alt={job.company}/>
+       </div>
+       <div></div>
+       <div></div>
     </div>
 )
 
