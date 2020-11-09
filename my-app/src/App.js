@@ -1,12 +1,29 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import JobBoardComponent from './components/JobBoardComponents';
-import JobBoardComponet from './components/JobBoardComponents';
+import data from './assets/static-job-listings-master/data.json';
+
+
 
 function App() {
+  const [jobs, setJobs] = useState([]);
+  useEffect (() => {
+      setJobs(data);
+    }, []);
+
+    console.log(jobs);
+
   return (
     <div className="App">
       <h1>starting a new app</h1>
-      <JobBoardComponent />
+      {
+         jobs.length === 0 ? (
+          <p>fetching jobs...</p>
+        ) : (
+          jobs.map( job =>
+            <JobBoardComponent job ={job} key = {job.id}/>
+          ))
+      }
+      
     </div>
   );
 }
