@@ -1,8 +1,9 @@
 import React from 'react';
 
-const JobBoardComponent = () => (
+const JobBoardComponent = (props) => (
     <div>
-        This is the Job Board!
+        <h1>{props.job.company}</h1>
+        <p>This is the Job Board!</p>
     </div>
 )
 
