@@ -14,7 +14,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className = 'text-4xl' >starting a new app</h1>
+      <header className = 'bg-teal-400 mb-12'>
+        <img src= './images/bg-header-desktop.svg' alt= 'bg-pic' />
+      </header>
       {
          jobs.length === 0 ? (
           <p>fetching jobs...</p>
