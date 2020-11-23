@@ -29,7 +29,7 @@ function App() {
     }
 
 
-    return tags.some(tag => filters.includes(tag));
+    return filters.every(filter => tags.includes(filter));
   }
 
   const handleTagClick = (tag) => {
