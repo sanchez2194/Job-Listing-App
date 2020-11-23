@@ -17,6 +17,8 @@ const JobBoardComponent = ({
 
     },
 
+    handleTagClick,
+
 }) => {
 
     const tags = [role, level];
@@ -56,7 +58,7 @@ const JobBoardComponent = ({
             <div className='flex flex-wrap items-center mt-4 mx-4 pt-4 border-t border-gray-500 border-solid sm:ml-auto sm:border-0 sm:pt-0 sm:mt-0'>
                 {tags ?
                     tags.map((tag) =>
-                        <span className='flex font-bold bg-teal-100 text-teal-500 m-2 p-2 mr-4 mb-4 rounded sm:mb-0'>{tag}</span>) : ''}
+                        <span onClick = { () => handleTagClick(tag)} className='cursor-pointer font-bold bg-teal-100 text-teal-500 m-2 p-2 mr-4 mb-4 rounded sm:mb-0'>{tag}</span>) : ''}
 
 
             </div>
