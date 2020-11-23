@@ -33,12 +33,17 @@ function App() {
   }
 
   const handleTagClick = (tag) => {
-    if(filters.includes(tag)) return;
+    if (filters.includes(tag)) return;
     setFilters([...filters, tag])
   }
 
   const handleFilterClick = (passedFilter) => {
     setFilters(filters.filter((f) => f !== passedFilter));
+  }
+
+
+  const clearFilters = () => {
+    setFilters([]);
   }
 
   const filteredJobs = jobs.filter(filterFunc);
@@ -48,33 +53,36 @@ function App() {
   return (
     <div className="App">
       <header className='bg-teal-400 mb-12'>
-        <img src='./images/bg-header-desktop.svg' alt='bg-pic' />
+        <img className = 'w-full' src='./images/bg-header-desktop.svg' alt='bg-pic' />
       </header>
 
-      
-        {filters.length > 0 && 
-        <div className={`flex bg-white shadow-lg my-16 mx-10 p-6 rounded `}>{filters.map((filter) => 
-        <span onClick = { () => handleFilterClick(filter)} 
-        className='flex font-bold cursor-pointer bg-teal-100 text-teal-500 m-2 p-2 mr-4 mb-4 rounded sm:mb-0'>{filter} 
-        <span className = 'bg-teal-500 text-teal-100'>×</span></span>
+
+      {filters.length > 0 &&
+        <div className={`flex bg-white shadow-lg my-16 mx-10 p-6 rounded `}>{filters.map((filter) =>
+          <span className='flex font-bold cursor-pointer bg-teal-100 text-teal-500 m-2 p-2 mr-4 mb-4 rounded sm:mb-0'
+            onClick={() => handleFilterClick(filter)}> × {filter}</span>
         )}
 
-      </div >
-  }
+          <button onClick = {clearFilters} className = 'font-bold text-gray-700 ml-auto'>
+            Clear
+          </button>
 
-{
-  jobs.length === 0 ? (
-    <p>fetching jobs...</p>
-  ) : (
-      filteredJobs.map(job => (
-        <JobBoardComponent
-          job={job}
-          key={job.id}
-          handleTagClick={handleTagClick}
-        />
-      ))
-    )
-}
+        </div >
+      }
+
+      {
+        jobs.length === 0 ? (
+          <p>fetching jobs...</p>
+        ) : (
+            filteredJobs.map(job => (
+              <JobBoardComponent
+                job={job}
+                key={job.id}
+                handleTagClick={handleTagClick}
+              />
+            ))
+          )
+      }
 
     </div >
   );
